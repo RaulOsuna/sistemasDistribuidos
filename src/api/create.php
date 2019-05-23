@@ -17,22 +17,69 @@ if(isset($postdata) && !empty($postdata))
   }
 
   // Sanitize.
-  $number = mysqli_real_escape_string($con, trim($request->number));
-  $amount = mysqli_real_escape_string($con, (int)$request->amount);
+  $idsucursal = mysqli_real_escape_string($con, (string)$request->idsucursal);
+  $calldate = mysqli_real_escape_string($con, (string)$request->calldate);
+  $clid = mysqli_real_escape_string($con, (string)$request->clid);
+  $src = mysqli_real_escape_string($con, (string)$request->src);
+  $dst = mysqli_real_escape_string($con, (string)$request->dst);
+  $dcontext = mysqli_real_escape_string($con, (string)$request->dcontext);
+  $channel = mysqli_real_escape_string($con, (string)$request->channel);
+  $dstchannel = mysqli_real_escape_string($con, (string)$request->dstchannel);
+  $lastapp = mysqli_real_escape_string($con, (string)$request->lastapp);
+  $lastdata = mysqli_real_escape_string($con, (string)$request->lastdata);
+  $duration = mysqli_real_escape_string($con, (string)$request->duration);
+  $billsec = mysqli_real_escape_string($con, (string)$request->billsec);
+  $disposition = mysqli_real_escape_string($con, (string)$request->disposition);
+  $amaflags = mysqli_real_escape_string($con, (string)$request->amaflags);
+  $accountcode = mysqli_real_escape_string($con, (string)$request->accountcode);
+  $uniqueid = mysqli_real_escape_string($con, (string)$request->uniqueid);
+  $userfield = mysqli_real_escape_string($con, (string)$request->userfield);
 
 
   // Create.
-  $sql = "INSERT INTO `policies`(`id`,`number`,`amount`) VALUES (null,'{$number}','{$amount}')";
+  $sql = "INSERT INTO `cdr`(
+    idsucursal,
+    calldate , 
+    clid, 
+    src, 
+    dst, 
+    dcontext, 
+    channel, 
+    dstchannel, 
+    lastapp, 
+    lastdata, 
+    duration, 
+    billsec, 
+    disposition, 
+    amaflags, 
+    accountcode, 
+    uniqueid, 
+    userfield
+    ) VALUES ('{$idsucursal}','{$calldate}','{$clid}','{$src}',{'$dst'},{'$dcontext'},{'$channel'},{'$dstchannel'},{'$lastapp'},{'$lastdata'},{'$duration'},{'$billsec'},{'$disposition'},{'$amaflags'},{'$accountcode'},{'$uniqueid'},{'$userfield'})";
 
   if(mysqli_query($con,$sql))
   {
     http_response_code(201);
-    $policy = [
-      'number' => $number,
-      'amount' => $amount,
-      'id'    => mysqli_insert_id($con)
+    $llamadas = [
+      'idsucursal' => $number,
+      'calldate' => $amount,
+      'clid'    => $clid,
+      'src'    => $src,
+      'dst'    => $dst,
+      'dcontext'    => $dcontext,
+      'channel'    => $channel,
+      'dstchannel'    => $dstchannel,
+      'lastapp'    => $lastapp,
+      'lastdata'    => $lastdata,
+      'duration'    => $duration,
+      'billsec'    => $billsec,
+      'disposition'    => $disposition,
+      'amaflags'    => $amaflags,
+      'accountcode'    => $accountcode,
+      'uniqueid'    => $uniqueid,
+      'userfield'    => $userfield
     ];
-    echo json_encode($policy);
+    echo json_encode($llamadas);
   }
   else
   {
