@@ -2,25 +2,38 @@
   <div class="col-lg-4">
     <h3 style="text-align: center">Seleccione sucursal</h3>
       <select name="" id="" class="form-control">
-        <option value="" hidden>SUCURSALES</option>
+        <option value="0" hidden>SUCURSALES</option>
+        <option value="1">Tijuana, Baja california</option>
+        <option value="2">Merida, Yucatan</option>
+        <option value="3">Acapulco, Guerrero</option>
       </select>
+      <select title="Select your surfboard" class="selectpicker form-control">
+          <option value="0" hidden>SUCURSALES</option>
+          <option value="1"  style="background-image:url('../../assets/img/bc.png');" >Tijuana, Baja california</option>
+          <option data-thumbnail="images/icon-chrome.png">Chrome</option>
+          <option data-thumbnail="images/icon-firefox.png">Firefox</option>
+          <option data-thumbnail="images/icon-ie.png">IE</option>
+          <option data-thumbnail="images/icon-opera.png">Opera</option>
+          <option data-thumbnail="images/icon-safari.png">Safari</option>
+        </select>
   </div>
   <div class="col-lg-4">
     <h3 style="text-align: center">Fecha desde</h3>
     <input type="date" name="" id="" class="form-control">
-    <h3 style="text-align: center">Origen</h3>
-    <input type="text" name="" id="" class="form-control">
-  </div>
-  <div class="col-lg-4">
     <h3 style="text-align: center">Fecha hasta</h3>
     <input type="date" name="" id="" class="form-control">
+    <button (click)="filtroFechas()" >Mostrar información</button>
+  </div>
+  <div class="col-lg-4">
+    <h3 style="text-align: center">Origen</h3>
+    <input type="text" name="" id="" class="form-control">
     <h3 style="text-align: center">Destino</h3>
     <input type="text" name="" id="" class="form-control">
   </div>
 </div>
 <br><br>
-<table class="table">
-  <thead>
+<table datatable class="table" #tabla id="tabla" name="tabla">
+  <thead style="background-color: rgb(138, 2, 2); color:white">
     <tr>
       <th scope="col">#</th>
       <th scope="col">First</th>

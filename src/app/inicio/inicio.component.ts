@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { example } from '../ejemplo';
-import $ from 'jquery';
+import * as $ from 'jquery';
+import 'datatables.net';
+import 'datatables.net-dt';
 export interface llamadas{
   id:String;
   nombre:String;
@@ -19,9 +21,13 @@ export class InicioComponent implements OnInit {
     });
 
   }
+  filtroFechas(){
 
+  }
   ngOnInit() {
-  
+    $(document).ready(()=>{
+      $('#tabla').DataTable();
+    })
   }
 
 
