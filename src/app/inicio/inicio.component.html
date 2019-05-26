@@ -1,64 +1,91 @@
+<!-- Modal -->
+<div class="modal show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Información adicional</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="card" style="width: 18rem;">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Duracion de la llamada desde que marco (duration):</li>
+                  <li class="list-group-item">ID unico de la llamada (uniqueid)</li>
+                  <li class="list-group-item">Nombre del canal de la llamada (channel)</li>
+                </ul>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Final modal-->
 <div class="row">
   <div class="col-lg-4">
     <h3 style="text-align: center">Seleccione sucursal</h3>
-      <select name="" id="" class="form-control">
+      <select name="" id="" class="form-control" (change)="seleccion($event.target.value)">
         <option value="0" hidden>SUCURSALES</option>
+        <option value="4">Todas</option>
         <option value="1">Tijuana, Baja california</option>
         <option value="2">Merida, Yucatan</option>
         <option value="3">Acapulco, Guerrero</option>
       </select>
-      <select title="Select your surfboard" class="selectpicker form-control">
-          <option value="0" hidden>SUCURSALES</option>
-          <option value="1"  style="background-image:url('../../assets/img/bc.png');" >Tijuana, Baja california</option>
-          <option data-thumbnail="images/icon-chrome.png">Chrome</option>
-          <option data-thumbnail="images/icon-firefox.png">Firefox</option>
-          <option data-thumbnail="images/icon-ie.png">IE</option>
-          <option data-thumbnail="images/icon-opera.png">Opera</option>
-          <option data-thumbnail="images/icon-safari.png">Safari</option>
-        </select>
+      <img src="{{src}}" alt="" style="width: 250px;height:auto; margin:0 auto;display: block">
+  </div>
+  
+  <div class="col-lg-4">
+    <div class="card text-center" style="width: 18rem;">
+      <div class="card-body">
+        <h3 style="text-align: center">Fecha desde</h3>
+        <input type="date" name="" id="" class="form-control">
+        <h3 style="text-align: center">Fecha hasta</h3>
+        <input type="date" name="" id="" class="form-control">
+        <br>
+        <button class="btn" (click)="filtroFechas()" >Filtrar por fechas</button>
+      </div>
+    </div>
+    
   </div>
   <div class="col-lg-4">
-    <h3 style="text-align: center">Fecha desde</h3>
-    <input type="date" name="" id="" class="form-control">
-    <h3 style="text-align: center">Fecha hasta</h3>
-    <input type="date" name="" id="" class="form-control">
-    <button (click)="filtroFechas()" >Mostrar información</button>
-  </div>
-  <div class="col-lg-4">
-    <h3 style="text-align: center">Origen</h3>
-    <input type="text" name="" id="" class="form-control">
-    <h3 style="text-align: center">Destino</h3>
-    <input type="text" name="" id="" class="form-control">
+      <div class="card text-center" style="width: 18rem;">
+          <div class="card-body">
+              <h3 style="text-align: center">Origen</h3>
+              <input type="text" name="" id="" class="form-control">
+              <h3 style="text-align: center">Destino</h3>
+              <input type="text" name="" id="" class="form-control">
+              <br>
+              <button class="btn">Filtrar por extensión</button>
+          </div>
+        </div>
+    
   </div>
 </div>
 <br><br>
+<div class="card" style="background-color: rgb(2, 84, 138);color: wheat">
+    <div class="card-body">
+      <h3 style="text-align:center">{{titulo}}</h3>
+    </div>
+  </div>
+<br> <br>
 <table datatable class="table" #tabla id="tabla" name="tabla">
-  <thead style="background-color: rgb(138, 2, 2); color:white">
+  <thead style="background-color: rgb(2, 84, 138); color:white">
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Numero origen de llamada (clid)</th>
+      <th scope="col">Numero destino de la llamada (src)</th>
+      <th scope="col">Duración (billsec)</th>
+      <th scope="col">Estatus de llamada (disposition)</th>
+      <th scope="col">+Info</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
     <tr>
       <th scope="row">3</th>
       <td>Larry</td>
       <td>the Bird</td>
       <td>@twitter</td>
+      <td><button class="btn" data-toggle="modal" data-target="#exampleModal" ><i class="fas fa-info"></i></button></td>
     </tr>
+
   </tbody>
 </table>

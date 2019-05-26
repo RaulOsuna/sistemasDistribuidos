@@ -1,4 +1,19 @@
 export interface llamadas{
-    id:string;
-    nombre:string;
+    idsucursal?:string;
+    calldate?:string;
+    clid?:string;
+    src?:string;
+    dst?:string;
+    dcontext?:string;
+    channel?:string;
+    dstchannel?:string;
+    lastapp?:string;
+    lastdata?:string;
+    duration?:string;
+    billsec?:string;
+    disposition?:string;
+    amaflags?:string;
+    accountcode?:string;
+    uniqueid?:string;
+    userfield?:string;
 }
